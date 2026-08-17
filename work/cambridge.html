@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cambridge Commodities quote cockpit | Sizo Manana</title>
+<meta name="description" content="Designing a CPQ quote cockpit as a HubSpot UI extension, inside a platform that permits no custom CSS. Case study by Sizo Manana.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%230f4c5c'/><text y='69' x='50' text-anchor='middle' font-size='56' font-family='Georgia,serif' fill='%23fbf9f6'>S</text></svg>">
+<link rel="stylesheet" href="../assets/css/site.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site">
+  <div class="wrap">
+    <a class="brand" href="../index.html">Sizo Manana<span>CRO and Product Designer</span></a>
+    <nav class="top" aria-label="Primary">
+      <a href="../index.html">Work</a>
+      <a href="../about.html">About</a>
+      <a class="btn small" href="mailto:sizomanana12@gmail.com?subject=Role%20enquiry">Get in touch</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+<section class="hero">
+  <div class="narrow">
+    <p class="eyebrow">Enterprise product design</p>
+    <h1>A quoting tool built inside a platform that will not let you write CSS</h1>
+    <p class="lede">
+      Cambridge Commodities is a bulk ingredient supplier. Their sales reps were building quotes across multiple
+      products, each with several scenario lines varying by quantity, warehouse and dispatch date, and every line
+      needing live cost and stock data from an ERP. It was slow, and it lived nowhere near the CRM.
+    </p>
+
+    <div class="kv">
+      <div><span class="k">My role</span><span class="v">UI, UX and CRO design lead</span></div>
+      <div><span class="k">Team</span><span class="v">One project manager, one developer</span></div>
+      <div><span class="k">Platform</span><span class="v">HubSpot UI extension, a React app embedded in a CRM record page</span></div>
+      <div><span class="k">Data sources</span><span class="v">Ross ERP for live cost and stock, Snowflake for historical pricing</span></div>
+      <div><span class="k">Status</span><span class="v">Shipped</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="tight">
+  <div class="wrap">
+    <!-- REPLACE: hero image. Export the cockpit at full width from Figma, save as assets/img/cambridge/cover.jpg -->
+    <figure class="fig">
+      <div class="slot">
+        <strong>Hero image goes here</strong>
+        Export the full quote cockpit view from Figma at around 2000px wide and save it as
+        <code>assets/img/cambridge/cover.jpg</code>. Then replace this whole grey box with:<br><br>
+        <code>&lt;img src="../assets/img/cambridge/cover.jpg" alt="The quote cockpit inside a HubSpot CRM record page"&gt;</code>
+      </div>
+      <figcaption>The three zone record page. Quote header on the left, quoting cockpit in the middle, historical intelligence on the right, each scrolling independently.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="tight">
+  <div class="narrow">
+    <h2 style="margin-top:0">The constraint that produced the design</h2>
+    <p>
+      HubSpot UI extensions allow no custom CSS. You build only from HubSpot's own component library, at the sizes
+      those components come in. There is no talking your way around it and no clever workaround. If a decision
+      cannot be expressed in a real component at its real size, it is not a decision, it is a wish.
+    </p>
+    <p>
+      I have come to think this is a better way to work than having a blank canvas. A constraint forces you to
+      justify things you would otherwise decide by taste.
+    </p>
+
+    <div class="callout">
+      <h4>Click to edit was not a style choice</h4>
+      <p>
+        HubSpot's <code>Input</code>, <code>Select</code> and <code>DateInput</code> components are 240px wide
+        across all 488 variants. Three editable columns at native size consume 720px of the 774px available in
+        that card. There was no version of this where three inputs sat side by side. So editable cells became
+        compact, and open the real control on click. The pattern came out of the measurements, not out of a
+        moodboard.
+      </p>
+    </div>
+
+    <!-- REPLACE: component measurement diagram or annotated screenshot -->
+    <figure class="fig">
+      <div class="slot">
+        <strong>Component sizing evidence</strong>
+        A screenshot showing the 240px component width against the available space, or your Figma annotation of it.
+        Save as <code>assets/img/cambridge/component-widths.jpg</code>.
+      </div>
+      <figcaption>240px minimum across 488 component variants, against 774px of usable card width.</figcaption>
+    </figure>
+
+    <h2>What I verified instead of assumed</h2>
+    <p>
+      The scenario table is 973px wide inside a 794px card. Most designers hand that over and find out in build
+      whether it works. I checked HubSpot's documentation first and confirmed that
+      <code>TableCell width="min"</code> overflows and produces a horizontal scrollbar, so the overflow was a
+      designed behaviour rather than a surprise for the developer.
+    </p>
+    <p>
+      That is a small thing. It is also the difference between a handover a developer can build and one they have
+      to reinterpret.
+    </p>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="narrow">
+    <h2 style="margin-top:0">Designing the consequences of the architecture</h2>
+    <p>
+      The system never stores ERP costs. That is deliberate and it is the right call technically, but it has a
+      consequence a sales rep will feel: reopen a quote and the prices are blank until you re-simulate. That is
+      counterintuitive enough that it deserved its own screen and its own explanation, rather than a rep assuming
+      the tool had lost their work.
+    </p>
+    <p>
+      I also proposed that editing any ERP input, quantity, warehouse or dispatch date, should clear that line's
+      prices and un-tick it as Won, because the stored figures no longer describe the line. I reasoned that from
+      the architecture and flagged it for the developer to confirm rather than asserting it as settled.
+    </p>
+
+    <figure class="fig">
+      <div class="slot">
+        <strong>The zero bloat state</strong>
+        The reopened quote screen showing blank prices before re-simulation.
+        Save as <code>assets/img/cambridge/zero-bloat.jpg</code>.
+      </div>
+      <figcaption>A reopened quote before re-simulation. Designing for a data model decision, not just a screen.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section>
+  <div class="narrow">
+    <h2 style="margin-top:0">Failure states as first class flows</h2>
+    <p>
+      Most design work ships the happy path and leaves engineering to invent the error states. I think that is
+      backwards, because the error states are where a sales rep loses trust in a tool, and a tool a rep does not
+      trust does not get used.
+    </p>
+    <ul>
+      <li>Partial ERP failure, where some lines return and others do not</li>
+      <li>ERP order rejection, with two distinct recovery routes that produce genuinely different orders</li>
+      <li>Snowflake unreachable, so the historical intelligence panel has no data to show</li>
+      <li>A mandatory re-simulation gate that catches a stock shortage before anything is written</li>
+    </ul>
+
+    <div class="fig-grid two">
+      <figure>
+        <div class="slot"><strong>Failure state 1</strong><code>assets/img/cambridge/fail-erp.jpg</code></div>
+        <figcaption>Partial ERP failure.</figcaption>
+      </figure>
+      <figure>
+        <div class="slot"><strong>Failure state 2</strong><code>assets/img/cambridge/fail-gate.jpg</code></div>
+        <figcaption>Re-simulation gate catching a stock shortage before write.</figcaption>
+      </figure>
+    </div>
+
+    <div class="metrics">
+      <div class="metric"><div class="num">43</div><div class="lbl">frames covering the full quote lifecycle</div></div>
+      <div class="metric"><div class="num">6</div><div class="lbl">named prototype walkthroughs, three of them client facing</div></div>
+      <div class="metric"><div class="num">3,000+</div><div class="lbl">real HubSpot component instances against two local copies</div></div>
+      <div class="metric"><div class="num">3</div><div class="lbl">open architectural questions annotated rather than decided silently</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="narrow">
+    <h2 style="margin-top:0">Click through the prototype</h2>
+    <p>
+      Every hotspot is a specific, named control. No click anywhere shortcuts, so the interaction being
+      demonstrated is never ambiguous. There is a history aware back control on every screen and a keyboard
+      shortcut, which means anyone can present it cold.
+    </p>
+
+    <!-- REPLACE: paste your Figma prototype embed URL into the src below.
+         In Figma: Share > Get embed code, then copy just the URL from inside src="..."
+         NOTE: this makes the file publicly viewable. For Evara client work, get written permission first. -->
+    <div class="embed tall">
+      <div class="slot" style="border-radius:0;border:0;padding:60px 24px">
+        <strong>Figma prototype embed goes here</strong>
+        In Figma, open the prototype, click <strong>Share</strong>, then <strong>Get embed code</strong>. Copy the
+        URL from inside <code>src="..."</code> and paste it in place of this box as:<br><br>
+        <code>&lt;iframe src="YOUR-FIGMA-EMBED-URL" allowfullscreen title="Quote cockpit prototype"&gt;&lt;/iframe&gt;</code>
+        <br><br>
+        Embedding makes the file publicly viewable. Get Fran's written permission before doing this with client work.
+      </div>
+    </div>
+    <p class="embed-note">Six named walkthroughs. Written plain language handover meant the project manager and developer could run client sessions without me in the room.</p>
+  </div>
+</section>
+
+<section>
+  <div class="narrow">
+    <p class="pull">
+      The three questions I could not answer, I annotated for the developer instead of deciding them quietly:
+      whether line IDs renumber after a delete, whether multiple product blocks can expand at once, and whether
+      committing an ERP input should invalidate that line.
+    </p>
+    <p>
+      I would rather hand over a design with three honest open questions on it than one that looks finished and
+      quietly guesses. The guesses are the expensive part, because nobody knows they were guesses until the build
+      is half done.
+    </p>
+
+    <div class="callout win">
+      <h4>What I would do differently</h4>
+      <p>
+        I would have pulled the developer into the component measurement work a week earlier. I established the
+        240px constraint myself and then designed against it, which worked, but he had that knowledge already and
+        we could have skipped a cycle. Being right on your own is slower than being right together.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="narrow">
+    <div class="pn" style="border-top:0;margin-top:0;padding-top:0">
+      <a href="../index.html"><span class="k">Back to</span>All work</a>
+      <a href="evara-cpq.html"><span class="k">Next project</span>Evara CPQ platform</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap cols">
+    <div>
+      <h2>Open to CRO, UX and product design roles</h2>
+      <p>Remote, UK or EU hours. Permanent positions.</p>
+      <p><a href="mailto:sizomanana12@gmail.com">sizomanana12@gmail.com</a></p>
+      <p><a href="https://www.linkedin.com/in/siphiwo-sizonqoba-manana-8a19591ab/">LinkedIn</a></p>
+    </div>
+    <div>
+      <p class="k">Where</p>
+      <p>Johannesburg, South Africa</p>
+      <p>Available immediately</p>
+    </div>
+    <div>
+      <p class="k">Elsewhere</p>
+      <p><a href="../Sizo-Manana-CV.pdf">Download CV</a></p>
+      <p><a href="../about.html">About me</a></p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

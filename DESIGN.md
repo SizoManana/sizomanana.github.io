@@ -44,6 +44,11 @@ designed, not inverted.
 | `--dark` | `#0c1712` | `#121a16` | Sidebar, footer, `.ink` sections |
 | `--on-dark` / `--on-dark-2` | `#f2f5f2` / `#a9b6ae` | same | Text on dark |
 
+One trap found the hard way: `section.ink a` sets links to the bright accent, and a filled `.btn` is
+an anchor, so inside a dark section the button rendered accent text on an accent fill. Buttons carry
+an explicit `section.ink a.btn` override. Any new element that is both an anchor and a filled surface
+needs the same treatment.
+
 **Every pair clears WCAG AA for body text at 4.5:1.** Measured, not assumed. The lowest is
 `--ink-3` on `--paper-2` at 4.99:1. A validator in the build computes all 21 pairs and reports any
 that drop below the threshold.
@@ -129,6 +134,10 @@ body. That is a decision, not an oversight.
 | `.callout` | Aside | Left emerald border on a wash. `.win` for what I would do differently, `.note` for a caveat. Title is a `<p class="callout-title">`, never a heading, so the outline stays clean |
 | `.pull` | Pull quote | Heavy, emerald top rule, one per page maximum |
 | `.video` | Lazy video | A real `<button>` with `aria-label`. Nothing loads from YouTube until pressed, then a `youtube-nocookie.com` iframe replaces the button |
+| `.timeline` | Career arc | An `<ol>` with a rail, nodes that activate as they pass 58 percent of the viewport, and a fill height driven by a `--fill` custom property. The fill is a pseudo element, not a child span, because a span is not valid inside an `<ol>` |
+| `.jumpnav` | Long form navigation | Sticky section links with an active state tracked by `IntersectionObserver`. Used on pages long enough that a reader needs to know where they are |
+| `.progress` | Reading progress | A fixed 3px bar driven by `transform: scaleX()`, offset by the sidebar width on desktop. Hidden entirely under reduced motion |
+| `.reveal` | Long image disclosure | Full page mobile designs run to 10,000 pixels and more. Clipped to 600px with a fade, expanded by a real `<button>` carrying `aria-expanded`. The clip is applied by script on load, so with JavaScript off the full image simply shows rather than being hidden |
 
 ### Before and after: why not a slider
 
@@ -147,6 +156,8 @@ site had one fabricated section in an early draft, which is why the rule is writ
 ## Motion
 
 - Only `transform`, `opacity`, `background-color`, `border-color`, `color`. Never `transition: all`.
+- Disclosure is instant, not animated. Expanding a 10,000 pixel image with a height transition is a
+  jank generator for no benefit.
 - 160ms, `ease`.
 - Every transition and the smooth scroll are disabled under `prefers-reduced-motion: reduce`.
 - No scroll driven animation, no entrance animation, no parallax.
@@ -171,7 +182,7 @@ site had one fabricated section in an early draft, which is why the rule is writ
 | Item | Budget | Actual |
 |---|---|---|
 | CSS | under 25 KB | about 21 KB, one file, no framework |
-| JavaScript | under 1 KB | about 400 bytes, one page, for the lazy video |
+| JavaScript | under 4 KB | about 2.8 KB, for the reading progress bar, the timeline fill, the jump nav active state, the long image disclosure and the lazy video |
 | Third party requests on load | zero | zero |
 | Cookies | zero | zero |
 | Images with explicit dimensions | 100 percent | 100 percent, written at build time from the file on disk |
@@ -199,6 +210,42 @@ Two validators run after every build:
    the video button creates exactly one `youtube-nocookie` iframe and only after a click.
 
 Both must pass before the site is packaged.
+
+---
+
+## Metadata and the social card
+
+Every page carries a canonical URL and an `og:url` built from its own output path at write time, not
+typed by hand, so a page cannot ship somebody else's canonical and a new page gets both for free.
+
+One social card serves the whole site: 1200 by 630, generated from the same tokens and the same
+portrait as the site itself, declared with `og:image:width`, `og:image:height` and `og:image:alt`, and
+mirrored to `twitter:card` as `summary_large_image`. A portfolio whose only distribution channel is a
+link pasted into a profile cannot afford to preview as bare text.
+
+The home page carries `ProfilePage` and `Person` structured data, so a search for the person returns
+an entity rather than a document.
+
+---
+
+## Image formats
+
+New images ship as WebP. Existing JPEG covers stay as they are, because rewriting them would change
+bytes without changing anything a visitor experiences, and the point of a performance budget is the
+visitor rather than the score. Every image, in either format, still carries its own width and height
+read off disk at build time.
+
+---
+
+## The notes component
+
+`ul.notes` republishes annotations that were originally written inside a design file as real text
+rather than as pixels inside a screenshot. Left rule in the accent, quiet source line beneath in the
+mono face.
+
+The reason is not decoration. Text baked into an image is invisible to a screen reader and to a
+search engine, and it cannot be selected or quoted. If the reasoning is the valuable part of a
+wireframe, it does not belong in the JPEG.
 
 ---
 

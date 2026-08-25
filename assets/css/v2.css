@@ -70,3 +70,8 @@
 .v2-callout-dark p:last-child{margin-bottom:0}
 
 .v2-footer-note{max-width:54ch;color:var(--on-dark-2)}
+
+/* Review fixes */
+.v2-rolegrid .v2-status + h3{margin-top:1rem}
+.timeline li.on::before{border-color:var(--green);background:var(--green);transform:scale(1.18)}
+section.alt .timeline li.on::before{background:var(--green);border-color:var(--green)}

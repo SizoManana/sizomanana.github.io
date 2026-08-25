@@ -50,9 +50,13 @@
 .v2-status.good{border-color:var(--green);color:var(--green)}
 .v2-status.partial{border-color:var(--ink-3);color:var(--ink-3)}
 
-.v2-mini-nav{display:flex;gap:.55rem;flex-wrap:wrap;margin:1.3rem 0 0}
-.v2-mini-nav a{font-size:var(--step--2);font-weight:800;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border-bottom:2px solid var(--line);padding:.2rem 0}
-.v2-mini-nav a:hover{border-color:var(--green)}
+/* Case study navigation: visually distinct from page content */
+.v2-mini-nav{display:flex;gap:.5rem;flex-wrap:wrap;margin:1.5rem 0 0;padding:1rem 1.1rem 1.1rem;border:1px solid var(--green);border-left:5px solid var(--green);background:var(--green-wash);align-items:center}
+.v2-mini-nav::before{content:"Case study navigation";flex:0 0 100%;font-size:var(--step--2);font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--green);margin-bottom:.25rem}
+.v2-mini-nav a{display:inline-flex;align-items:center;min-height:2.2rem;font-size:var(--step--2);font-weight:800;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border:1px solid var(--line);background:var(--paper);padding:.5rem .7rem;color:inherit;transition:border-color .15s ease,background .15s ease,color .15s ease}
+.v2-mini-nav a:hover,.v2-mini-nav a:focus-visible{border-color:var(--green);background:var(--green);color:var(--dark);outline:none}
+@media(max-width:620px){.v2-mini-nav{padding:.9rem}.v2-mini-nav a{flex:1 1 calc(50% - .5rem);justify-content:center;text-align:center}}
+@media(max-width:420px){.v2-mini-nav a{flex-basis:100%}}
 
 .v2-section-index{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gap);margin-top:1.4rem}
 .v2-section-index a{display:block;border:1.5px solid var(--line);padding:1rem;text-decoration:none;color:inherit;background:var(--paper)}

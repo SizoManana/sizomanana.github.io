@@ -50,13 +50,17 @@
 .v2-status.good{border-color:var(--green);color:var(--green)}
 .v2-status.partial{border-color:var(--ink-3);color:var(--ink-3)}
 
-/* Case study navigation: intentionally distinct from page content */
-.v2-mini-nav{display:flex;gap:.5rem;flex-wrap:wrap;margin:1.5rem 0 0;padding:1rem 1.1rem 1.1rem;border:1px solid var(--green);border-left:5px solid var(--green);background:var(--green-wash);align-items:center}
+/* Case study navigation: sticky so section anchors remain available throughout long pages. */
+.v2-mini-nav{display:flex;gap:.5rem;flex-wrap:wrap;margin:1.5rem 0 0;padding:1rem 1.1rem 1.1rem;border:1px solid var(--green);border-left:5px solid var(--green);background:color-mix(in srgb,var(--green-wash) 96%,transparent);align-items:center;position:sticky;top:1rem;z-index:24;box-shadow:0 1px 0 color-mix(in srgb,var(--green) 22%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
 .v2-mini-nav::before{content:"Follow the thinking";flex:0 0 100%;font-size:var(--step--2);font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--green);margin-bottom:.25rem}
 .v2-mini-nav a{display:inline-flex;align-items:center;justify-content:center;min-height:44px;font-size:var(--step--2);font-weight:800;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border:1px solid var(--line);background:var(--paper);padding:.55rem .75rem;color:inherit;transition:border-color .15s ease,background-color .15s ease,color .15s ease;overflow-wrap:anywhere}
 .v2-mini-nav a:hover,.v2-mini-nav a:focus-visible{border-color:var(--green);background:var(--green);color:var(--on-green)}
+.v2-mini-nav a.on{border-color:var(--green);box-shadow:inset 0 -3px 0 var(--green)}
+@media(max-width:1079px){.v2-mini-nav{top:5.25rem}}
+@media(max-width:760px){.v2-mini-nav{top:9.75rem}}
 @media(max-width:620px){.v2-mini-nav{padding:.9rem}.v2-mini-nav a{flex:1 1 calc(50% - .5rem);text-align:center}}
-@media(max-width:420px){.v2-mini-nav a{flex-basis:100%}}
+@media(max-width:420px){.v2-mini-nav{top:11rem}.v2-mini-nav a{flex-basis:100%}}
+@media(max-width:360px){.v2-mini-nav{top:12rem;padding:.75rem}}
 
 .v2-section-index{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--gap);margin-top:1.4rem}
 .v2-section-index a{display:block;border:1.5px solid var(--line);padding:1rem;text-decoration:none;color:inherit;background:var(--paper);min-width:0}
@@ -86,10 +90,10 @@ section.alt .timeline li.on::before{background:var(--green);border-color:var(--g
 
 @media(prefers-reduced-motion:reduce){
   .v2-mini-nav a,.v2-section-index a,.v2-featured .card{transition:none}
+  .v2-mini-nav{backdrop-filter:none;-webkit-backdrop-filter:none}
   .timeline li.on::before{transform:none}
 }
 
 @media(max-width:360px){
-  .v2-mini-nav{padding:.75rem}
   .v2-evidence>div,.v2-rolegrid>div,.v2-scorecompare>div{padding:.85rem}
 }

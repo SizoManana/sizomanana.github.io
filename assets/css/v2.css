@@ -8,9 +8,13 @@
 .v2-path p{margin:0;color:var(--ink-2);font-size:var(--step--1)}
 @media(max-width:760px){.v2-path{grid-template-columns:1fr}}
 
-.v2-featured{display:grid;grid-template-columns:1.25fr .75fr;gap:var(--gap);margin-bottom:var(--gap)}
-.v2-featured .card:first-child{grid-row:span 2}
-@media(max-width:850px){.v2-featured{grid-template-columns:1fr}.v2-featured .card:first-child{grid-row:auto}}
+/* Featured work: equal horizontal strip on desktop */
+.v2-featured{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--gap);margin-bottom:var(--gap);align-items:stretch}
+.v2-featured .card{height:100%}
+.v2-featured .card:first-child{grid-row:auto}
+.v2-featured .card .shot img{aspect-ratio:16/10;object-fit:cover;object-position:top center;width:100%}
+@media(max-width:900px){.v2-featured{grid-template-columns:1fr 1fr}.v2-featured .card:last-child{grid-column:1/-1}}
+@media(max-width:620px){.v2-featured{grid-template-columns:1fr}.v2-featured .card:last-child{grid-column:auto}}
 
 .v2-evidence{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:1.6rem}
 .v2-evidence>div{background:var(--paper);padding:1rem}

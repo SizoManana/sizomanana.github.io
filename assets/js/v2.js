@@ -1,5 +1,5 @@
 (function(){
-  function rafThrottle(fn){
+  function raf(fn){
     var queued=false;
     return function(){
       if(queued) return;
@@ -11,36 +11,40 @@
     };
   }
 
-  function initTimeline(){
-    var timeline=document.querySelector('.timeline');
-    if(!timeline) return;
+  function timeline(){
+    var tl=document.querySelector('.timeline');
+    if(!tl) return;
 
-    var items=[].slice.call(timeline.querySelectorAll('li'));
-    var reduceMotion=window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if(reduceMotion) return;
+    var nodes=[].slice.call(tl.querySelectorAll('li'));
 
-    function update(){
-      var rect=timeline.getBoundingClientRect();
-      var trigger=window.innerHeight*0.58;
-      var fill=Math.max(0,Math.min(rect.height,trigger-rect.top));
-      timeline.style.setProperty('--fill',fill+'px');
+    var tick=function(){
+      var r=tl.getBoundingClientRect();
+      var mid=window.innerHeight*0.58;
+      var fill=Math.max(0,Math.min(r.height,mid-r.top));
 
-      items.forEach(function(item){
-        var itemRect=item.getBoundingClientRect();
-        var circleY=itemRect.top+8;
-        item.classList.toggle('on',circleY<=trigger);
+      tl.style.setProperty('--fill',fill+'px');
+
+      nodes.forEach(function(n){
+        var markerY=(n.offsetTop+8);
+        if(fill>=markerY){
+          n.classList.add('on');
+        }else{
+          n.classList.remove('on');
+        }
       });
-    }
+    };
 
-    var onScroll=rafThrottle(update);
-    window.addEventListener('scroll',onScroll,{passive:true});
-    window.addEventListener('resize',onScroll,{passive:true});
-    update();
+    var on=raf(tick);
+    window.addEventListener('scroll',on,{passive:true});
+    window.addEventListener('resize',on,{passive:true});
+    window.addEventListener('load',tick);
+    tick();
   }
 
-  if(document.readyState==='loading'){
-    document.addEventListener('DOMContentLoaded',initTimeline);
+  function boot(){timeline();}
+  if(document.readyState!=='loading'){
+    boot();
   }else{
-    initTimeline();
+    document.addEventListener('DOMContentLoaded',boot);
   }
 })();

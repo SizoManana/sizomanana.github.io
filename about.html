@@ -115,6 +115,30 @@
 </section>
 </main>
 <footer class="site"><div class="wrap"><div class="cols"><div><h2>Different entry points, one practice</h2><p class="v2-footer-note">Research helps me understand the problem. Product and UX design shape the intervention. CRO and analytics make the result inspectable.</p></div><div><span class="k">Portfolio</span><p><a href="index.html">Selected work</a></p><p><a href="approach.html">Approach</a></p><p><a href="work/pine.html">PINE</a></p></div><div><span class="k">Contact</span><p><a href="mailto:sizomanana12@gmail.com">Email</a></p><p><a href="Sizo-Manana-CV.pdf">CV</a></p></div></div></div></footer>
-<script src="assets/js/v2.js"></script>
+<script>
+(function(){
+  function raf(fn){var q=false;return function(){if(!q){q=true;requestAnimationFrame(function(){fn();q=false;});}};}
+  function timeline(){
+    var tl=document.querySelector('.timeline'); if(!tl) return;
+    var nodes=[].slice.call(tl.querySelectorAll('li'));
+    var tick=function(){
+      var r=tl.getBoundingClientRect(), mid=window.innerHeight*0.58;
+      var fill=Math.max(0,Math.min(r.height,mid-r.top));
+      tl.style.setProperty('--fill',fill+'px');
+      nodes.forEach(function(n){
+        var marker=n.offsetTop+8;
+        if(fill>=marker){n.classList.add('on');}else{n.classList.remove('on');}
+      });
+    };
+    var on=raf(tick);
+    addEventListener('scroll',on,{passive:true});
+    addEventListener('resize',on,{passive:true});
+    addEventListener('load',tick);
+    tick();
+  }
+  function boot(){timeline();}
+  if(document.readyState!=='loading'){boot();}else{document.addEventListener('DOMContentLoaded',boot);}
+})();
+</script>
 </body>
 </html>

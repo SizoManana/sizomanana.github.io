@@ -50,6 +50,7 @@
           e.preventDefault();
           var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
           window.scrollTo({top:0,behavior:reduce?'auto':'smooth'});
+          if(window.history && history.pushState){history.pushState(null,'',location.pathname+location.search);}
         });
       }
 
@@ -73,6 +74,15 @@
         return stuck ? nav.offsetHeight : 56;
       }
 
+      function targetY(target){
+        return Math.max(0,target.getBoundingClientRect().top+window.scrollY-topOffset()-pinnedHeight()-16);
+      }
+
+      function goToTarget(target,behaviour){
+        if(!target) return;
+        window.scrollTo({top:targetY(target),behavior:behaviour});
+      }
+
       sectionLinks.forEach(function(a){
         a.addEventListener('click',function(e){
           var id=a.getAttribute('href').slice(1);
@@ -80,8 +90,7 @@
           if(!target) return;
           e.preventDefault();
           var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-          var y=target.getBoundingClientRect().top+window.scrollY-topOffset()-pinnedHeight()-16;
-          window.scrollTo({top:Math.max(0,y),behavior:reduce?'auto':'smooth'});
+          goToTarget(target,reduce?'auto':'smooth');
           if(window.history && history.pushState){history.pushState(null,'','#'+id);}else{location.hash=id;}
         });
       });
@@ -93,7 +102,11 @@
           var target=document.getElementById(a.getAttribute('href').slice(1));
           if(target && target.offsetTop<=threshold) active=a;
         });
-        sectionLinks.forEach(function(a){a.classList.toggle('on',a===active);});
+        sectionLinks.forEach(function(a){
+          var isActive=a===active;
+          a.classList.toggle('on',isActive);
+          if(isActive){a.setAttribute('aria-current','location');}else{a.removeAttribute('aria-current');}
+        });
       }
 
       function unstick(){
@@ -127,11 +140,25 @@
         syncActive(offset);
       }
 
+      function alignCurrentHash(){
+        var id=decodeURIComponent(location.hash.replace(/^#/,''));
+        if(!id) return;
+        var target=document.getElementById(id);
+        if(!target) return;
+        requestAnimationFrame(function(){
+          tick();
+          goToTarget(target,'auto');
+          tick();
+        });
+      }
+
       var on=raf(tick);
       window.addEventListener('scroll',on,{passive:true});
       window.addEventListener('resize',on,{passive:true});
-      window.addEventListener('load',tick);
+      window.addEventListener('load',function(){tick();alignCurrentHash();});
+      window.addEventListener('hashchange',alignCurrentHash);
       tick();
+      if(document.readyState==='complete') alignCurrentHash();
     });
   }
 

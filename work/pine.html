@@ -3,304 +3,191 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Pine, a CRO audit engine, Sizo Manana</title>
-<meta name="description" content="A five stage conversion audit engine I built: headless capture, a programmatic code audit, a vision pass, a cross reference stage, and a report where every recommendation cites its source.">
+<title>PINE | AI-assisted UX and CRO analysis | Sizo Manana</title>
+<meta name="description" content="PINE is a human-in-the-loop AI-assisted UX and CRO analysis prototype. This case study covers the workflow problem, product design, evaluation, failure modes and next iteration.">
 <meta name="theme-color" content="#0c1712">
 <meta name="author" content="Sizo Manana">
-<meta property="og:title" content="Pine, a CRO audit engine, Sizo Manana">
-<meta property="og:description" content="A five stage conversion audit engine I built: headless capture, a programmatic code audit, a vision pass, a cross reference stage, and a report where every recommendation cites its source.">
-<meta property="og:type" content="website">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='0' fill='%230b6e4f'/><text y='70' x='50' text-anchor='middle' font-size='58' font-family='Georgia,serif' fill='%23fbf9f6'>S</text></svg>">
 <link rel="canonical" href="https://sizomanana.github.io/work/pine.html">
-<meta property="og:url" content="https://sizomanana.github.io/work/pine.html">
-<meta property="og:site_name" content="Sizo Manana">
-<meta property="og:locale" content="en_GB">
-<meta property="og:image" content="https://sizomanana.github.io/assets/img/me/og-card.jpg">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:image:type" content="image/jpeg">
-<meta property="og:image:alt" content="Sizo Manana, portfolio card reading I design interfaces, then I prove they worked">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Sizo Manana, CRO and product designer">
-<meta name="twitter:image" content="https://sizomanana.github.io/assets/img/me/og-card.jpg">
 <link rel="stylesheet" href="../assets/css/site.css">
+<link rel="stylesheet" href="../assets/css/v2.css">
+<script src="../assets/js/v2.js" defer></script>
 </head>
 <body>
-<div class="progress" aria-hidden="true"><i></i></div>
 <a class="skip" href="#main">Skip to content</a>
-
 <header class="sidebar">
   <div class="inner">
-    <a class="mark" href="../index.html">
-      <img class="avatar" src="../assets/img/me/avatar.jpg" alt="" width="128" height="128" decoding="async">
-      <span><b>Sizo Manana</b><span translate="no">CRO and Product Design</span></span>
-    </a>
+    <a class="mark" href="../index.html"><img class="avatar" src="../assets/img/me/avatar.jpg" alt="" width="128" height="128"><span><b>Sizo Manana</b><span>UX · Product · CRO</span></span></a>
     <nav class="sidenav" aria-label="Primary">
       <a href="../index.html" aria-current="page">Work</a>
-      <a href="../work/wireframes.html">Wireframes</a>
-      <a href="../work/interface.html">Interface</a>
-      <a href="../work/earlier.html">Earlier</a>
+      <a href="../approach.html">Approach</a>
+      <a href="wireframes.html">Wireframes</a>
       <a href="../about.html">About</a>
       <a href="../Sizo-Manana-CV.pdf">CV</a>
       <a class="cta" href="mailto:sizomanana12@gmail.com?subject=Hiring%20enquiry">Hire Me</a>
     </nav>
   </div>
-  <div class="rail">
-    <a href="https://www.linkedin.com/in/siphiwo-sizonqoba-manana-8a19591ab/" rel="me">LinkedIn</a>
-    <a href="mailto:sizomanana12@gmail.com">Email</a>
-    <span class="yr">Johannesburg, ZA</span>
-  </div>
+  <div class="rail"><a href="https://www.linkedin.com/in/siphiwo-sizonqoba-manana-8a19591ab/">LinkedIn</a><a href="https://github.com/SizoManana/pine-intelligence">PINE GitHub</a><a href="mailto:sizomanana12@gmail.com">Email</a><span class="yr">Side project · 2026</span></div>
 </header>
-
 <main id="main">
-
 <section class="hero">
   <div class="narrow wide">
-    <p class="barhead" style="display:inline-block">A tool I built, start to finish</p>
-    <h1>A CRO audit engine that is not allowed to state an opinion without a source</h1>
-    <p class="lede">Pine takes a URL and returns a conversion audit. It renders the page in a
-    headless browser, audits the markup and CSS programmatically, reads the rendered screenshots
-    with a vision model, cross references the two layers against each other, and writes a report
-    where every recommendation has to name the research or principle behind it.</p>
+    <p class="barhead" style="display:inline-block">Side project · 2026</p>
+    <p class="eyebrow">Concept · Product Design · CRO Methodology · AI-assisted Prototyping</p>
+    <h1>PINE: a faster first pass, with the <mark>consultant still accountable.</mark></h1>
+    <p class="lede">Personal Intelligence Engine is a local working prototype designed to turn a lengthy first-pass website audit into a faster, structured starting point for consultant review.</p>
+    <p class="v2-hero-note">The premise is intentionally narrow: AI performs the first pass. The consultant supplies context, verification, prioritisation and accountability.</p>
+    <ul class="v2-ownership" aria-label="My contribution"><li>Problem framing</li><li>Product concept</li><li>CRO methodology</li><li>UX/UI design</li><li>AI-assisted build</li><li>Evaluation</li></ul>
+    <div class="cta-row"><a class="btn" href="https://github.com/SizoManana/pine-intelligence">View GitHub repository</a><a class="btn ghost" href="https://lnkd.in/p/dvxjXujQ">View LinkedIn project</a></div>
   </div>
 </section>
 
-<section class="tight">
+<section class="tight alt">
   <div class="narrow wide">
     <div class="kv">
-  <div><span class="k">What it is</span><span class="v">A five stage analysis pipeline, Python and Flask</span></div>
-  <div><span class="k">Stack</span><span class="v">Playwright, BeautifulSoup, tinycss2, the Anthropic API, server sent events</span></div>
-  <div><span class="k">Who built it</span><span class="v">Me, all of it, on my own time</span></div>
-  <div><span class="k">Permission needed to show you</span><span class="v">None</span></div>
-</div>
-    <p>Everything else on this site belongs to an employer or a client. This does not, which is why
-    it is the second thing on the home page rather than the last.</p>
-    <figure>
-  <img src="../assets/img/pine/home.webp" alt="The Pine landing screen, showing a URL field, two analysis modes for a full CRO audit or a UI and UX pass, and optional business context chips" width="1440" height="830" loading="lazy" decoding="async">
-  <figcaption>The entry point. Two modes, because a UI and UX pass does not need the code audit or the cross reference stage, and running them anyway wastes 40 seconds and a lot of tokens.</figcaption>
-</figure>
+      <div><span class="k">Problem</span><span class="v">Repetitive first-pass prospect and upselling audits</span></div>
+      <div><span class="k">Target</span><span class="v">A structured first pass in under 3 minutes, followed by human verification</span></div>
+      <div><span class="k">Modes</span><span class="v">Full CRO Audit and focused UI/UX Analysis</span></div>
+      <div><span class="k">Status</span><span class="v">Local-only working prototype, still being evaluated</span></div>
+    </div>
+    <nav class="v2-mini-nav" aria-label="Case study sections"><a href="#challenge">Challenge</a><a href="#product">Product</a><a href="#evaluation">Evaluation</a><a href="#failure">Failure modes</a><a href="#boundary">Verification boundary</a><a href="#next">Next</a></nav>
+  </div>
+</section>
+
+<section id="challenge">
+  <div class="narrow wide">
+    <p class="barhead">The challenge</p>
+    <h2 style="margin-top:0">A day-long first pass should not delay the first useful conversation.</h2>
+    <p>PINE began as a practical response to repetitive prospect and upselling audits. The opportunity was not to automate consulting judgement. It was to reduce repetitive inspection work, surface likely issues quickly and give the consultant a clearer place to begin.</p>
+    <div class="v2-rolegrid">
+      <div><h3>What I wanted the tool to do</h3><ul><li>Accelerate prospect and upselling preparation</li><li>Combine visual inspection with structured CRO reasoning</li><li>Produce prioritised findings a consultant can verify</li><li>Make the limits of AI visible rather than hide them</li></ul></div>
+      <div><h3>What I did not want it to become</h3><ul><li>An autonomous UX researcher</li><li>A source of unverified conversion claims</li><li>A compliance checker pretending certainty</li><li>A replacement for analytics, testing or consultant judgement</li></ul></div>
+    </div>
+    <div class="v2-proof"><strong>Core product position</strong>AI performs the first pass. The consultant supplies context, verification, prioritisation and accountability.</div>
   </div>
 </section>
 
 <section class="alt">
   <div class="narrow wide">
-    <h2>The five stages, and why there are five</h2>
-    <p>The obvious version of this tool is one call: send a screenshot to a vision model and ask
-    what is wrong. That version produces confident, generic, unfalsifiable advice. Splitting it into
-    a programmatic layer and a perceptual layer, then making them argue, is the whole point.</p>
-    <ul class="metrics">
-  <li class="metric"><div class="num">01</div><div class="lbl">Capture</div></li>
-  <li class="metric"><div class="num">02</div><div class="lbl">Code audit</div></li>
-  <li class="metric"><div class="num">03</div><div class="lbl">Visual audit</div></li>
-  <li class="metric"><div class="num">04</div><div class="lbl">Cross reference</div></li>
-  <li class="metric"><div class="num">05</div><div class="lbl">Report</div></li>
-</ul>
-    <p><b>Capture</b> renders the URL in headless Chromium at 1440 by 900 and again at 390 by 844,
-    extracts the post JavaScript HTML, pulls up to five external stylesheets while skipping font and
-    CDN hosts, and records load timing and console errors. Long pages are captured as a series of
-    viewport sized screenshots rather than one enormous image, because one enormous image exceeds
-    the vision API's size limit and gets silently downscaled into uselessness.</p>
-    <p><b>The code audit</b> calls no model at all. It parses the HTML with BeautifulSoup and the
-    CSS with tinycss2, resolves custom properties, and computes WCAG contrast ratios from the
-    relative luminance formula rather than trusting a library. It returns ten groups: structure,
-    meta and SEO, images, forms, navigation, calls to action, trust signals, performance, colour
-    contrast and accessibility. This is the half of the audit that cannot hallucinate.</p>
-    <p><b>The visual audit</b> sends the screenshots to a vision model in a consultant persona and
-    parses structured JSON, with all the section screenshots in a single multi image call so the
-    model can see the page as a sequence rather than as unrelated fragments. Every scored item comes
-    back as a score, an observation, a verdict and a detail.</p>
-    <p><b>The cross reference</b> is the stage that justifies the architecture. It feeds both layers
-    to the model and asks specifically for confirmations, gaps, contradictions and hidden issues. A
-    form that looks simple but carries hidden fields. A page that looks mobile optimised but has no
-    viewport meta tag. Social proof on screen with no schema markup behind it. As the docstring in
-    the file puts it, the question is not whether there is an H1, it is whether the H1 looks
-    prominent while reading as a brand tagline rather than a value proposition.</p>
-    <figure>
-  <img src="../assets/img/pine/pipeline.webp" alt="The Pine pipeline running against a live URL, showing the five stages streaming their status one after another" width="1440" height="1220" loading="lazy" decoding="async">
-  <figcaption>A live run. Progress arrives over server sent events, because a 90 second wait with no feedback is a page somebody closes.</figcaption>
-</figure>
+    <p class="barhead">My contribution</p>
+    <h2 style="margin-top:0">From a workflow pain point to a working prototype</h2>
+    <p>My role covered the product and consulting logic end to end. AI-supported development was used to turn the concept into a functioning local prototype.</p>
+    <div class="v2-evidence">
+      <div><span class="k">01 · Problem</span><span class="v">Identified a repetitive audit process that could be accelerated.</span></div>
+      <div><span class="k">02 · Product</span><span class="v">Defined two audit modes, the five-stage flow and report experience.</span></div>
+      <div><span class="k">03 · Method</span><span class="v">Translated existing UX/CRO audit frameworks into structured prompts and outputs.</span></div>
+      <div><span class="k">04 · UX/UI</span><span class="v">Designed the local interface, states, hierarchy and visual language.</span></div>
+      <div><span class="k">05 · Build</span><span class="v">Used AI-assisted development to realise the concept without presenting myself as a traditional software engineer.</span></div>
+      <div><span class="k">06 · Evaluation</span><span class="v">Tested output quality, documented limitations and defined the next iteration.</span></div>
+    </div>
   </div>
 </section>
 
-<section>
+<section id="product">
   <div class="narrow wide">
-    <h2>Three decisions I would defend in an interview</h2>
-    <h3>The scores are computed in Python, never by the model</h3>
-    <p>UI out of 100 and UX out of 100, each broken into weighted criteria. Every point is derived
-    from the structured JSON of the earlier stages, never from the narrative text. Colour and
-    contrast is worth 15, and 5 of those 15 come from the measured ratio of failing contrast pairs
-    to pairs checked. Conversion pathway is worth 20, and a form scores 5 at five fields or fewer,
-    3 at eight or fewer, and 1 above that.</p>
-    <p>The reason is reproducibility. If a language model assigns the number, the same site scores
-    differently on Tuesday, and a client who reruns the audit after paying for the fixes cannot tell
-    improvement from variance. This way the narrative can vary and the number cannot.</p>
-    <div class="callout">
-  <p class="callout-title">The fallback that makes a partial run still useful</p>
-  <p>If a vision call fails, the missing sub score falls back to 60 percent of its available points rather than zero. Zero would make one flaky API call look like a design catastrophe. Sixty percent keeps a partial run honest and comparable, and the report says which stages did not complete.</p>
-</div>
+    <p class="barhead">How PINE works</p>
+    <h2 style="margin-top:0">Two modes. Five stages. One consultant-controlled output.</h2>
+    <p>The prototype offers a Full CRO Audit and a more focused UI/UX Analysis. The Full CRO path adds a technical layer and cross-references it against the visual findings.</p>
+    <div class="v2-loop" role="list">
+      <div role="listitem"><b>01</b><span>Capture</span></div><div role="listitem"><b>02</b><span>Code audit</span></div><div role="listitem"><b>03</b><span>Visual analysis</span></div><div role="listitem"><b>04</b><span>Cross-reference</span></div><div role="listitem"><b>05</b><span>Consultant report</span></div>
+    </div>
+    <figure><img src="../assets/img/pine/home.webp" alt="PINE entry screen with URL input and two analysis modes" width="1440" height="830" loading="lazy"><figcaption>The prototype entry point. The user selects either a Full CRO Audit or a focused UI/UX Analysis.</figcaption></figure>
+    <figure><img src="../assets/img/pine/pipeline.webp" alt="PINE pipeline showing the analysis stages as they run" width="1440" height="1220" loading="lazy"><figcaption>The staged workflow makes the process visible rather than presenting a single opaque AI response.</figcaption></figure>
+    <p class="v2-quiet">Known prototype clean-up: some screens in the evaluation still displayed the earlier working label “Site Intelligence Engine”. The final naming standard is Personal Intelligence Engine.</p>
+  </div>
+</section>
 
-    <h3>Every recommendation has to cite something</h3>
-    <p>The report schema will not accept a recommendation without a research field naming the
-    principle or benchmark behind it, and the tool carries a list of the ones it may cite: Nielsen
-    Norman Group on the F pattern and the ten heuristics, Baymard on form abandonment, Hick's law on
-    choice, Fitts's law on touch target size, the Fogg behaviour model, Formisimo on the cost of each
-    additional field. Recommendations arrive ranked with a severity, a finding, the research, the
-    action and the expected impact.</p>
-    <p>I built that constraint in because it is the thing I ask of myself. An audit that says the
-    hero should be stronger is an opinion. An audit that says fourteen choices above the fold exceeds
-    working memory, cites the source, and names the fix is a brief.</p>
+<section class="alt" id="evaluation">
+  <div class="narrow wide">
+    <p class="barhead">Evaluation setup</p>
+    <h2 style="margin-top:0">One public demo page. Two deliberately limited runs.</h2>
+    <p>I tested one B2B SaaS demonstration homepage twice: once using the Full CRO Audit and once using UI/UX Analysis. The narrow scope was deliberate. It conserved tokens while still exercising both modes and gave me a way to compare outputs against the same page.</p>
+    <div class="v2-evidence">
+      <div><span class="k">Page</span><span class="v">open.cruip.com</span></div>
+      <div><span class="k">Context</span><span class="v">B2B SaaS demo page with AI-assisted workflow positioning</span></div>
+      <div><span class="k">Run 1</span><span class="v">Full CRO Audit</span></div>
+      <div><span class="k">Run 2</span><span class="v">UI/UX Analysis</span></div>
+    </div>
+    <h3>What the Full CRO run produced</h3>
+    <div class="v2-scorecompare"><div><span class="big">64 / 100</span><p>UI heuristic score</p></div><div><span class="big">45 / 100</span><p>UX heuristic score</p></div></div>
+    <p>The run returned 14 prioritised recommendations. The strongest value was not the number itself, but the cross-reference layer: it gave the consultant evidence to interrogate rather than a generic AI summary.</p>
+    <div class="v2-proof"><strong>Important caveat</strong>These are heuristic scores. They are not observed conversion rates, user-test outcomes or measured business performance.</div>
+  </div>
+</section>
 
-    <h3>Failures are honest internally and calm externally</h3>
-    <p>Full tracebacks go to the server log. The user sees one plain sentence explaining that the
-    site may block automated browsers or failed to load. Async Playwright runs inside a background
-    thread with its own event loop so the synchronous Flask server can stream progress at the same
-    time, and a stage that fails degrades the report rather than killing the job.</p>
+<section id="failure">
+  <div class="narrow wide">
+    <p class="barhead">Where the prototype was wrong</p>
+    <h2 style="margin-top:0">Accurate detection can still produce an overconfident verdict.</h2>
+    <p>The clearest example came from the hero. PINE correctly detected template copy that conflicted with the supplied AI-workflow positioning. Manual review confirmed the mismatch. But the audited page was itself a public demonstration template, so treating the issue as a critical production failure overstated the real context.</p>
+    <div class="v2-rolegrid">
+      <div><span class="v2-status good">Confirmed</span><h3>Detection</h3><p>The conflicting template content existed and was repeated elsewhere on the page.</p></div>
+      <div><span class="v2-status partial">Context changed verdict</span><h3>Judgement</h3><p>The issue was real, but the assigned severity was too confident because the page was a demo template rather than a production experience.</p></div>
+    </div>
+
+    <h3>Same page. Different mode. Different score.</h3>
+    <p>The two runs exposed a more fundamental product issue:</p>
+    <div class="v2-scorecompare"><div><span class="big">64 UI / 45 UX</span><p>Full CRO Audit</p></div><div><span class="big">43 UI / 33 UX</span><p>UI/UX Analysis</p></div></div>
+    <p>A 21-point UI difference and 12-point UX difference on the same page means the current scores are mode-sensitive. I do not consider them stable measurements.</p>
+    <div class="v2-callout-dark"><p><strong>Product lesson:</strong> use a shared scoring rubric across modes, expose score weights and confidence, persist previous reports, and make mode comparison a first-class interaction rather than replacing report context.</p></div>
+  </div>
+</section>
+
+<section class="alt">
+  <div class="narrow wide">
+    <p class="barhead">Manual review</p>
+    <h2 style="margin-top:0">Useful first-pass findings, with different confidence levels</h2>
+    <div class="v2-research-grid">
+      <article><span class="v2-status partial">Partial</span><h3>Placeholder hero copy</h3><p>The mismatch was confirmed, but the severity was overstated because of the demo-page context.</p></article>
+      <article><span class="v2-status good">Accurate</span><h3>No trust signals above the fold</h3><p>The initial desktop and mobile captures showed no customer logos, ratings or testimonials above the fold.</p></article>
+      <article><span class="v2-status good">Accurate</span><h3>Repeated feature copy</h3><p>Feature descriptions repeated the same or near-identical copy across two sections.</p></article>
+      <article><span class="v2-status good">Accurate</span><h3>Duplicate “Enteprise” filters</h3><p>The typo and duplication were visible in the testimonial filter bar.</p></article>
+      <article><span class="v2-status partial">Partial</span><h3>Closing CTA contrast</h3><p>The CTA was visually weaker than the hero CTA, but formal WCAG status requires measured colour ratios.</p></article>
+      <article><span class="v2-status good">Accurate</span><h3>Missing testimonial roles</h3><p>Names and brands were visible, but professional roles were not supplied, reducing B2B context.</p></article>
+    </div>
+  </div>
+</section>
+
+<section id="boundary">
+  <div class="narrow wide">
+    <p class="barhead">Verification boundary</p>
+    <h2 style="margin-top:0">What still requires consultant or technical verification</h2>
+    <p>PINE should label these categories as unverified until supporting evidence is available.</p>
+    <div class="v2-evidence">
+      <div><span class="k">Metadata & schema</span><span class="v">Canonical, Open Graph, Twitter Card and JSON-LD claims require direct source inspection.</span></div>
+      <div><span class="k">Accessibility</span><span class="v">Alt coverage, landmarks, skip links and contrast require code and manual checks.</span></div>
+      <div><span class="k">Performance</span><span class="v">Image formats, render-blocking resources and Core Web Vitals require measured testing.</span></div>
+      <div><span class="k">Legal</span><span class="v">Consent and privacy obligations depend on scripts, processing, geography and legal review.</span></div>
+      <div><span class="k">Conversion impact</span><span class="v">Predicted improvements are hypotheses requiring tracking, baselines and post-change data.</span></div>
+      <div><span class="k">Research benchmarks</span><span class="v">Named studies and numeric claims need links to current primary sources before client use.</span></div>
+    </div>
+    <p class="v2-quiet">No accuracy percentage is claimed from this single evaluation. The evidence supports usefulness as a first pass, not autonomous decision-making.</p>
+  </div>
+</section>
+
+<section class="alt" id="next">
+  <div class="narrow wide">
+    <p class="barhead">What comes next</p>
+    <h2 style="margin-top:0">The limitations define the next product iteration.</h2>
+    <div class="v2-rolegrid">
+      <div><h3>Current limitations</h3><ul><li>Local-only working prototype</li><li>One page analysed per run</li><li>PDF export dropped from the current build</li><li>Switching modes replaces report context</li><li>Mode scores are not yet consistent</li><li>Some completion states can stall</li></ul></div>
+      <div><h3>Next improvements</h3><ul><li>Restore report-to-PDF export</li><li>Persist searchable audit history</li><li>Compare audit modes side by side</li><li>Standardise score weights and confidence</li><li>Attach source links to benchmark claims</li><li>Add timeout, retry and recovery states</li></ul></div>
+    </div>
+    <div class="v2-proof"><strong>Highest-value next feature</strong>Persistent audit history with mode switching and side-by-side comparison.</div>
   </div>
 </section>
 
 <section class="ink">
   <div class="narrow wide">
-    <h2>What happened when I pointed it at this site</h2>
-    <p>Running your own tool on your own work is the only version of this story worth telling, so I
-    did it, and it found things.</p>
-    <ul class="notes">
-  <li>
-    <p class="q">No og:image, so the portfolio previewed as bare text everywhere it was pasted. On a site whose entire distribution is one link in a LinkedIn profile, that was the most expensive fault on the page.</p>
-    <p class="src">fixed</p>
-  </li>
-  <li>
-    <p class="q">A favicon still set to the accent colour of a design direction I had abandoned. The browser tab did not match the site.</p>
-    <p class="src">fixed</p>
-  </li>
-  <li>
-    <p class="q">No canonical tag and no structured data, so a recruiter search saw a page rather than a person.</p>
-    <p class="src">fixed, ProfilePage and Person schema</p>
-  </li>
-  <li>
-    <p class="q">Images all in JPEG and PNG with no next generation formats. The wireframes and tool screenshots on this site are now WebP.</p>
-    <p class="src">fixed</p>
-  </li>
-  <li>
-    <p class="q">Zero strong calls to action, because the keyword list behind that check does not contain the word hire. The rubric is wrong and the button is right, so I fixed the tool's blind spot in the write up rather than the copy on the page.</p>
-    <p class="src">disputed, and not changed</p>
-  </li>
-  <li>
-    <p class="q">Alt text coverage 89 percent. The one image without alt text is the portrait in the sidebar, deliberately empty because the text beside it already says my name. The tool counts an intentional empty alt as a missing one.</p>
-    <p class="src">a real bug in Pine, not in the site</p>
-  </li>
-</ul>
-    <p>The last two are the useful ones. A tool that only ever agrees with you is a tool you have
-    stopped reading.</p>
-    <div class="cta-row">
-      <a class="btn" href="../design-system.html">Read the design system</a>
-      <a class="btn ghost" href="wireframes.html">Wireframes and IA</a>
-    </div>
+    <p class="barhead">Reflection</p>
+    <h2 style="margin-top:0">AI did not replace the consultant. It created a faster place to begin.</h2>
+    <p>PINE is useful to me as product evidence because it shows the whole loop: a recurring workflow problem, a product hypothesis, interface and state design, a working prototype, evaluation against real output, and a roadmap shaped by the failures rather than hidden from them.</p>
+    <p>The question for the next iteration is not “How can the AI sound more certain?” It is: how can an AI-assisted audit become more consistent, transparent and useful without pretending that confidence is the same as correctness?</p>
+    <div class="cta-row"><a class="btn" href="https://github.com/SizoManana/pine-intelligence">Explore the repository</a><a class="btn ghost" href="https://lnkd.in/p/dvxjXujQ">See the LinkedIn project</a><a class="btn ghost" href="../approach.html">My wider approach</a></div>
   </div>
 </section>
-<section class="alt">
-<div class="narrow wide">
-<div class="pn" style="border-top:0;margin-top:0;padding-top:0">
-<a href="cambridge.html"><span>Previous</span>Cambridge Commodities CPQ</a>
-<a href="cpq.html"><span>Next project</span>Redslim CPQ <span class="arrow" aria-hidden="true">&rarr;</span></a>
-</div>
-</div>
-</section>
 
+<section class="tight alt"><div class="narrow wide"><div class="pn" style="border-top:0;margin-top:0;padding-top:0"><a href="cambridge.html"><span>Previous</span>Enterprise CPQ</a><a href="bso.html"><span>Next featured case</span>Measured CRO outcome <span class="arrow" aria-hidden="true">→</span></a></div></div></section>
 </main>
-
-<footer class="site">
-  <div class="wrap">
-    <div class="cols">
-      <div>
-        <h2>This page has one conversion goal</h2>
-        <p>It is me. Open to CRO, UX and product design roles, remote, on UK or EU hours,
-        permanent.</p>
-        <p><a href="mailto:sizomanana12@gmail.com">sizomanana12@gmail.com</a></p>
-        <p><a href="https://www.linkedin.com/in/siphiwo-sizonqoba-manana-8a19591ab/" rel="me">LinkedIn</a></p>
-        <p style="margin-top:1.1rem"><a class="btn" href="mailto:sizomanana12@gmail.com?subject=Hiring%20enquiry">Hire Me</a></p>
-      </div>
-      <div>
-        <span class="k">Where</span>
-        <p>Johannesburg, South Africa</p>
-        <p>Available immediately</p>
-      </div>
-      <div>
-        <span class="k">Elsewhere</span>
-        <p><a href="../Sizo-Manana-CV.pdf">Download the CV</a></p>
-        <p><a href="../index.html#work">All work</a></p>
-        <p><a href="../about.html">About me</a></p>
-        <p><a href="../design-system.html">Design system</a></p>
-      </div>
-    </div>
-    <p class="legal">Client work shown with permission. Where a figure appears it comes from
-    analytics or reporting I produced or instrumented, and the case study states what it does and does
-    not prove. No estimated, rounded or illustrative numbers appear anywhere on this site. Built as
-    static HTML and CSS with no web fonts, no analytics and no cookies.</p>
-  </div>
-</footer>
-<script>
-(function(){
-  function init(){
-    document.querySelectorAll('[data-reveal]').forEach(function(el){
-      if(el.scrollHeight <= 760) return;
-      el.classList.add('is-clipped');
-      var b=document.createElement('button');
-      b.type='button'; b.className='reveal-btn'; b.setAttribute('aria-expanded','false');
-      b.textContent='Show the Full Page';
-      b.addEventListener('click',function(){
-        var open=!el.classList.toggle('is-clipped');
-        b.setAttribute('aria-expanded',String(open));
-        b.textContent=open?'Show Less':'Show the Full Page';
-        if(!open){b.scrollIntoView({block:'nearest'});}
-      });
-      el.insertAdjacentElement('afterend',b);
-    });
-  }
-  function raf(fn){var q=false;return function(){if(!q){q=true;requestAnimationFrame(function(){fn();q=false;});}};}
-  function progress(){
-    var bar=document.querySelector('.progress i'); if(!bar) return;
-    var tick=function(){
-      var h=document.documentElement.scrollHeight-window.innerHeight;
-      bar.style.transform='scaleX('+(h>0?Math.min(1,window.scrollY/h):0)+')';
-    };
-    var on=raf(tick);
-    addEventListener('scroll',on,{passive:true}); addEventListener('resize',on,{passive:true}); tick();
-  }
-  function timeline(){
-    var tl=document.querySelector('.timeline'); if(!tl) return;
-    if(matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-    var nodes=[].slice.call(tl.querySelectorAll('li'));
-    var tick=function(){
-      var r=tl.getBoundingClientRect(), mid=window.innerHeight*0.58;
-      tl.style.setProperty('--fill', Math.max(0,Math.min(r.height, mid-r.top))+'px');
-      nodes.forEach(function(n){
-        var t=n.getBoundingClientRect().top;
-        if(t<mid){n.classList.add('on');}else{n.classList.remove('on');}
-      });
-    };
-    var on=raf(tick);
-    addEventListener('scroll',on,{passive:true}); addEventListener('resize',on,{passive:true}); tick();
-  }
-  function jumpnav(){
-    var jn=document.querySelector('.jumpnav');
-    if(!jn||!('IntersectionObserver' in window)) return;
-    var links=[].slice.call(jn.querySelectorAll('a')), map={};
-    links.forEach(function(a){
-      var id=a.getAttribute('href').slice(1), t=document.getElementById(id);
-      if(t){map[id]=a;}
-    });
-    var io=new IntersectionObserver(function(es){
-      es.forEach(function(e){
-        if(!e.isIntersecting) return;
-        links.forEach(function(a){a.classList.remove('on');});
-        if(map[e.target.id]){map[e.target.id].classList.add('on');}
-      });
-    },{rootMargin:'-18% 0px -70% 0px'});
-    Object.keys(map).forEach(function(id){io.observe(document.getElementById(id));});
-  }
-  function boot(){init();progress();timeline();jumpnav();}
-  if(document.readyState!=='loading'){boot();}else{document.addEventListener('DOMContentLoaded',boot);}
-})();
-</script>
+<footer class="site"><div class="wrap"><div class="cols"><div><h2>One product, several parts of the practice</h2><p class="v2-footer-note">PINE is where product design, CRO methodology, UX evaluation and AI-assisted prototyping meet in one piece of work.</p></div><div><span class="k">Portfolio</span><p><a href="../index.html">Selected work</a></p><p><a href="../approach.html">Approach</a></p></div><div><span class="k">Contact</span><p><a href="mailto:sizomanana12@gmail.com">Email</a></p><p><a href="../Sizo-Manana-CV.pdf">CV</a></p></div></div></div></footer>
 </body>
 </html>

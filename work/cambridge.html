@@ -25,6 +25,7 @@
 <meta name="twitter:image" content="https://sizomanana.github.io/assets/img/me/og-card.jpg">
 <link rel="stylesheet" href="../assets/css/site.css">
 <link rel="stylesheet" href="../assets/css/v2.css">
+<script src="../assets/js/v2.js" defer></script>
 </head>
 <body>
 <div class="progress" aria-hidden="true"><i></i></div>
@@ -82,6 +83,7 @@
       <div><span class="k">Product depth</span><span class="v">43 frames covered happy paths, scale tests, partial failures, rejection recovery and re-simulation gates.</span></div>
       <div><span class="k">Outcome</span><span class="v">The system shipped, with six named walkthroughs and a handoff structured so the team could run sessions without me.</span></div>
     </div>
+    <nav class="v2-mini-nav" aria-label="Case study sections"><a href="#constraint">Constraint</a><a href="#architecture">Architecture</a><a href="#failures">Failure states</a><a href="#system">System</a><a href="#reflection">Reflection</a></nav>
   </div>
 </section>
 
@@ -94,7 +96,7 @@
   </div>
 </section>
 
-<section class="tight">
+<section class="tight" id="constraint">
   <div class="narrow wide">
     <h2 style="margin-top:0">The constraint that produced the design</h2>
     <p>HubSpot UI extensions allow no custom CSS. You build only from HubSpot's own component
@@ -129,7 +131,7 @@
   </div>
 </section>
 
-<section class="alt">
+<section class="alt" id="architecture">
   <div class="narrow wide">
     <h2 style="margin-top:0">Designing the consequences of the architecture</h2>
     <p>The system never stores ERP costs. That is deliberate and it is the right call technically,
@@ -147,7 +149,7 @@
   </div>
 </section>
 
-<section>
+<section id="failures">
   <div class="narrow wide">
     <h2 style="margin-top:0">Failure states as first class flows</h2>
     <p>Most design work ships the happy path and leaves engineering to invent the error states. I
@@ -182,7 +184,7 @@
   </div>
 </section>
 
-<section class="alt">
+<section class="alt" id="system">
   <div class="narrow wide">
     <h2 style="margin-top:0">The whole system on one canvas</h2>
     <p>Every frame is prefixed and sequenced, from the first run empty state through partial
@@ -199,7 +201,7 @@
   </div>
 </section>
 
-<section>
+<section id="reflection">
   <div class="narrow wide">
     <p class="pull">The three questions I could not answer, I annotated for the developer instead of
     deciding them quietly: whether line IDs renumber after a delete, whether multiple product blocks

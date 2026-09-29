@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="900" viewBox="0 0 1440 900" role="img" aria-labelledby="title desc">
+  <title id="title">Redslim behavioural research and CRO strategy</title>
+  <desc id="desc">An illustrative research board connecting session evidence to five behavioural segments and a prioritised roadmap. It is a visual summary, not an analytics screenshot.</desc>
+  <defs>
+    <pattern id="grid" width="36" height="36" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r="1.2" fill="#d7ded7"/></pattern>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M1 1 L8 5 L1 9" fill="none" stroke="#0b6e4f" stroke-width="2"/></marker>
+    <filter id="shadow" x="-15%" y="-15%" width="140%" height="150%"><feDropShadow dx="0" dy="12" stdDeviation="15" flood-color="#12251b" flood-opacity=".09"/></filter>
+  </defs>
+  <rect width="1440" height="900" fill="#f3f4ed"/>
+  <rect width="1440" height="900" fill="url(#grid)"/>
+  <rect x="64" y="62" width="12" height="82" fill="#0b6e4f"/>
+  <g font-family="Arial, Helvetica, sans-serif" fill="#10261c">
+    <text x="102" y="94" font-size="23" font-weight="700" letter-spacing="4">REDSLIM / UX RESEARCH</text>
+    <text x="100" y="151" font-size="48" font-weight="700">Evidence that shaped the direction.</text>
+    <path d="M421 475 H493 M909 475 H985" fill="none" stroke="#0b6e4f" stroke-width="4" marker-end="url(#arrow)"/>
+    <g filter="url(#shadow)">
+      <rect x="65" y="238" width="352" height="472" rx="12" fill="#fff" stroke="#c9d5cd"/>
+      <rect x="500" y="238" width="406" height="472" rx="12" fill="#102b20"/>
+      <rect x="990" y="238" width="384" height="472" rx="12" fill="#fff" stroke="#c9d5cd"/>
+    </g>
+    <text x="94" y="281" font-size="17" font-weight="700" letter-spacing="2">01 / OBSERVE</text>
+    <text x="530" y="281" font-size="17" font-weight="700" letter-spacing="2" fill="#7de5ad">02 / UNDERSTAND</text>
+    <text x="1020" y="281" font-size="17" font-weight="700" letter-spacing="2">03 / PRIORITISE</text>
+    <g stroke="#9bb6a5" fill="none" stroke-width="2">
+      <rect x="101" y="326" width="280" height="173" rx="6"/>
+      <path d="M101 352 H381 M118 342 H123 M132 342 H137 M146 342 H151"/>
+      <path d="M119 475 H366 M119 442 H366 M119 408 H366" stroke="#e1e9e3"/>
+      <path d="M119 461 L157 461 L157 418 L203 418 L203 435 L245 435 L245 387 L294 387 L294 420 L366 420" stroke="#0b6e4f" stroke-width="4"/>
+    </g>
+    <circle cx="245" cy="387" r="8" fill="#0b6e4f"/>
+    <path d="M123 527 H350 M123 545 H304" stroke="#cbd9d0" stroke-width="7" stroke-linecap="round"/>
+    <g stroke="#408461" stroke-width="2"><path d="M703 445 L600 366 M703 445 L803 366 M703 445 L584 481 M703 445 L815 487 M703 445 L703 558"/></g>
+    <g fill="#b2efce" stroke="#102b20" stroke-width="5"><circle cx="600" cy="366" r="28"/><circle cx="803" cy="366" r="28"/><circle cx="584" cy="481" r="28"/><circle cx="815" cy="487" r="28"/><circle cx="703" cy="558" r="28"/></g>
+    <circle cx="703" cy="445" r="43" fill="#35c989"/>
+    <path d="M686 445 L698 457 L722 430" fill="none" stroke="#102b20" stroke-width="5"/>
+    <g fill="#e6efe9"><rect x="1030" y="330" width="302" height="57" rx="5"/><rect x="1030" y="416" width="302" height="57" rx="5"/><rect x="1030" y="502" width="302" height="57" rx="5"/></g>
+    <g fill="#0b6e4f"><rect x="1030" y="330" width="12" height="57" rx="3"/><rect x="1030" y="416" width="12" height="57" rx="3"/><rect x="1030" y="502" width="12" height="57" rx="3"/></g>
+    <g font-size="20" font-weight="700"><text x="1061" y="366">Foundation</text><text x="1061" y="452">Content &amp; journeys</text><text x="1061" y="538">Refinement</text></g>
+    <text x="95" y="634" font-size="55" font-weight="700">54</text><text x="95" y="671" font-size="22">recordings reviewed</text>
+    <text x="532" y="634" font-size="55" font-weight="700" fill="#fff">5</text><text x="532" y="671" font-size="22" fill="#d5e7dc">behavioural segments</text>
+    <text x="1020" y="634" font-size="55" font-weight="700">23</text><text x="1020" y="671" font-size="22">prioritised hypotheses</text>
+    <text x="66" y="799" font-size="22" fill="#496151">Existing personas + behavioural analysis → research-led recommendations</text>
+    <text x="66" y="842" font-size="16" fill="#62766a">Illustrative summary of the research process. No conversion uplift is represented.</text>
+  </g>
+</svg>

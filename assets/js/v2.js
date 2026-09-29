@@ -163,6 +163,12 @@
   }
 
   function boot(){
+    document.querySelectorAll('a[href]').forEach(function(a){
+      if(!/\bSizo-Manana-CV\.pdf(?:[?#]|$)/.test(a.getAttribute('href'))) return;
+      a.target='_blank';
+      a.rel='noopener noreferrer';
+      a.setAttribute('aria-label',a.textContent.trim()+' (opens in a new tab)');
+    });
     timeline();
     stickyMiniNav();
   }

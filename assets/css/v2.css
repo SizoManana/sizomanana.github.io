@@ -2,7 +2,13 @@
 
 .v2-hero-note{max-width:62ch;margin-top:1.2rem;color:var(--ink-2)}
 .v2-path{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);margin-top:2rem}
-.v2-path>div{background:var(--paper);padding:1.15rem;min-width:0}
+.v2-path>div,.v2-path>a{background:var(--paper);padding:1.15rem;min-width:0}
+.v2-path>a{color:inherit;text-decoration:none}
+.v2-path>a:hover,.v2-path>a:focus-visible{background:var(--paper-2,var(--paper));outline:2px solid var(--green);outline-offset:-2px}
+.research-cover{display:flex;align-items:center;justify-content:center;background:var(--green);color:var(--on-green);padding:2rem}
+.research-cover>div{display:grid;gap:.45rem}
+.research-cover b{font-size:clamp(1.4rem,2.5vw,2.1rem)}
+.research-cover small{margin-top:.65rem}
 .v2-path .n{display:block;font:800 var(--step--2)/1 var(--mono);letter-spacing:.14em;color:var(--green);margin-bottom:.55rem}
 .v2-path h3{margin:0 0 .35rem;font-size:var(--step-0)}
 .v2-path p{margin:0;color:var(--ink-2);font-size:var(--step--1)}

@@ -219,7 +219,6 @@ async function init(){
   if(saved){const match=saved.match(/^(\d+)\.(\d+)\.(\d+)$/);
    if(match){const bi=Number(match[1]),ch=Number(match[2]),v=Number(match[3]);
     if(bi>=0&&bi<66){setBook(bi);setChapter(ch);const r=bookRecords[bi].find(i=>records[i].ch===ch&&records[i].verse===v);if(r!==undefined)setVerse(r)}}}
-  }
   $('downloadButtons').style.display='flex';progress(100);message('✓ Verified exact KJV source and binary encoding. Ready to explore and download.');
  }catch(err){console.error(err);message('Unable to load or verify: '+err.message);$('retry').style.display='inline-flex';$('verseText').textContent='Could not initialize. Check your internet connection and tap Retry.'}
 }

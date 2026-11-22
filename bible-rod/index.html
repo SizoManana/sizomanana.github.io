@@ -157,6 +157,7 @@ async function getAll(){
  await Promise.all(Array.from({length:7},()=>worker()));return raw;
 }
 async function init(){
+ const requestedVerse=new URL(location.href).searchParams.get('v');
  $('retry').style.display='none';$('downloadButtons').style.display='none';
  try{
   message('Loading all 66 books...');progress(0);
@@ -215,7 +216,7 @@ async function init(){
   $('verse').onchange=()=>setVerse(Number($('verse').value));
   $('charSlider').oninput=updateChar;window.onresize=()=>{if(sourceBytes)updateChar()};
   setBook(0);
-  const saved=new URL(location.href).searchParams.get('v');
+  const saved=requestedVerse;
   if(saved){const match=saved.match(/^(\d+)\.(\d+)\.(\d+)$/);
    if(match){const bi=Number(match[1]),ch=Number(match[2]),v=Number(match[3]);
     if(bi>=0&&bi<66){setBook(bi);setChapter(ch);const r=bookRecords[bi].find(i=>records[i].ch===ch&&records[i].verse===v);if(r!==undefined)setVerse(r)}}}

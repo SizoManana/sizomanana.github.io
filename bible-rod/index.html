@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#071318"><meta name="description" content="Explore all 31,102 verses of the King James Bible as one exact arithmetic-coded binary fraction.">
+<title>The Bible on a Rod — One number, 66 books</title>
+<style>
+:root{color-scheme:dark;--bg:#071318;--panel:#10242c;--line:#284550;--fg:#e6f8fa;--muted:#9bb9c1;--accent:#77e4ef}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--fg);background:radial-gradient(ellipse 90% 420px at 25% -60px,#174652 0%,transparent 73%),var(--bg);font:15px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+main{max-width:1000px;margin:auto;padding:24px 15px 95px}header{padding:18px 0 19px;border-bottom:1px solid #31505a}
+.eyebrow{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.17em;color:#70d6e6}.hero{font-size:clamp(36px,8vw,68px);line-height:1.02;letter-spacing:-.055em;margin:13px 0}.hero em{font-style:normal;color:var(--accent)}p{color:var(--muted)}.intro{max-width:670px;margin-bottom:0}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin:17px 0}.stat,.card{border:1px solid var(--line);background:linear-gradient(145deg,#112a34dd,#0d2029d9);border-radius:14px}.stat{padding:12px}.stat strong{display:block;font-size:clamp(16px,3vw,24px);line-height:1.2}.stat small{color:#9ab5bd;text-transform:uppercase;font-size:10px;letter-spacing:.07em}
+.card{padding:17px;margin:13px 0}h2{font-size:21px;letter-spacing:-.03em;margin:0 0 5px}.sub{margin:0 0 14px;font-size:13px}
+#bits{background:#06161c;border:1px solid #2d5a65;border-radius:9px;padding:13px;color:#8aeeff;overflow-wrap:anywhere;font:12px/1.8 ui-monospace,SFMono-Regular,Menlo,monospace;min-height:60px}
+.rail{height:66px;display:flex;overflow:hidden;border:1px solid #6ca0ab;border-radius:4px;background:#153e49}.bookSeg{border:0;border-right:1px solid #67818c;min-width:1px;cursor:pointer;padding:0;background:#245461}.bookSeg:nth-child(2n){background:#1b4551}.bookSeg.active{background:#8be6f2;box-shadow:inset 0 0 0 1px #e4fcff}.bookSeg:focus-visible{outline:2px solid white;outline-offset:-3px}
+.ruler{display:flex;justify-content:space-between;color:#8bafb9;font:10px ui-monospace,monospace;margin:8px 0 5px}.axisline{height:1px;background:#7e9ca2;margin-bottom:8px}
+.controls{display:grid;grid-template-columns:2fr 1fr 1fr;gap:9px}label{font-size:11px;letter-spacing:.07em;color:#aac6ce;display:block;margin:0 0 5px}select{width:100%;min-height:46px;border:1px solid #416570;border-radius:8px;background:#071c24;color:white;padding:9px;font:14px system-ui}
+.verse{background:#071c24;border:1px solid #31535f;border-radius:10px;line-height:1.8;padding:14px;min-height:95px;margin:15px 0;overflow-wrap:anywhere;font:13px/1.9 ui-monospace,SFMono-Regular,Menlo,monospace}
+mark{color:#02151a;background:#80eaff;padding:2px;border-radius:3px}
+input[type=range]{width:100%;height:35px;accent-color:#76e2ee;touch-action:pan-y}
+canvas{display:block;width:100%;height:auto;aspect-ratio:5.5/1;border-radius:2px;background:#08232b}
+.metrics{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin:13px 0}.metric{min-width:0;border:1px solid #2c4f5b;border-radius:9px;padding:10px;background:#082028}.metric span{display:block;color:#89acb8;font-size:10px;text-transform:uppercase;letter-spacing:.08em}.metric strong{display:block;margin-top:4px;font:12px/1.5 ui-monospace,monospace;overflow-wrap:anywhere}
+button.primary,.action{padding:11px 14px;min-height:44px;border-radius:9px;border:1px solid #6fd2de;background:#7de7ee;color:#07232a;font-weight:800;font-size:13px;cursor:pointer;text-decoration:none;display:inline-flex;gap:6px;align-items:center;justify-content:center}
+button.secondary,.action.secondary{background:transparent;border-color:#4798a6;color:#b1f0f5}.actions{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0}
+#progressLine{background:#0b313a;height:7px;border-radius:9px;overflow:hidden;margin:10px 0}#progressBar{background:linear-gradient(90deg,#2198ac,#8ee9e9);height:100%;width:0%;transition:width .15s}
+.note{font-size:12px;color:#99b9c1;border-left:2px solid #4ebcce;padding-left:12px}.code{font:12px ui-monospace,Menlo,monospace;color:#9fe2ed;overflow-wrap:anywhere}
+#status{font-size:13px;color:#bbdbe1}#downloadButtons{display:none}.small{font-size:11px;color:#8babb3}
+footer{margin-top:22px;border-top:1px solid #31505a;padding-top:16px;color:#90aeb6;font-size:12px}a{color:#8fe7f4}
+@media(max-width:520px){main{padding:12px 10px 75px}.card{padding:13px}.stat{padding:10px 7px}.grid{gap:5px}.stat small{font-size:8px}.controls{gap:5px;grid-template-columns:1.6fr 1fr 1fr}select{font-size:12px;padding:6px}.metrics{gap:6px}.metric{padding:8px}}
+</style></head>
+<body><main>
+<header><div class="eyebrow">Information theory / Interactive experiment</div><h1 class="hero">The Bible.<br><em>One number.</em></h1><p class="intro">Explore the entire King James Bible as a single precise coordinate on the number line. Every book, chapter and verse narrows an arithmetic-coding interval, just like the 3Blue1Brown “rod” demonstration.</p></header>
+<section class="grid"><div class="stat"><strong>66</strong><small>Books</small></div><div class="stat"><strong>1,189</strong><small>Chapters</small></div><div class="stat"><strong>31,102</strong><small>Verses</small></div><div class="stat"><strong>20.73M</strong><small>Binary digits</small></div></section>
+<section class="card"><div class="eyebrow">The complete book encoded</div><h2>0.0100000110111101…</h2><p class="sub">The first digits of the exact number. The complete fraction is <b>20,727,884 bits long</b>; the probability model and decoding instructions must also be preserved.</p><div id="bits">Loading...</div>
+<div class="actions"><button class="secondary primary" id="copyBits">Copy 256-bit prefix</button><button class="secondary primary" id="copyLink">Share this site</button></div></section>
+<section class="card"><div class="eyebrow">01 / All 66 books</div><h2>The entire Bible on a rod</h2><p class="sub">Every segment is proportional to the bits contributed by its book. Tap a segment to inspect it.</p>
+<div class="ruler"><span>Genesis</span><span>0.5</span><span>Revelation</span></div><div id="globalRod" class="rail" aria-label="Bible books as an interactive number line"></div><div class="ruler"><span>Old Testament · 39 books</span><span>New Testament · 27 books</span></div></section>
+<section class="card"><div class="eyebrow">02 / Zoom into a verse</div><h2>The interval microscope</h2><p class="sub">Choose any verse, then drag the slider to advance byte by byte. The blue segment is the next probability interval retained by the encoder.</p>
+<div class="controls"><div><label for="book">Book</label><select id="book" disabled></select></div><div><label for="chapter">Chapter</label><select id="chapter" disabled></select></div><div><label for="verse">Verse</label><select id="verse" disabled></select></div></div>
+<div class="verse" id="verseText">Preparing the Bible...</div><label for="charSlider" id="charCaption">Character —</label><input id="charSlider" type="range" min="0" max="1" value="0" disabled>
+<div class="ruler"><span>0</span><span>0.2</span><span>0.4</span><span>0.6</span><span>0.8</span><span>1</span></div><canvas id="prob"></canvas>
+<div class="metrics"><div class="metric"><span>Current byte</span><strong id="symbol">—</strong></div><div class="metric"><span>Probability</span><strong id="probability">—</strong></div><div class="metric"><span>Bits already emitted</span><strong id="emitted">—</strong></div><div class="metric"><span>Arithmetic interval (hex)</span><strong id="interval">—</strong></div></div><p class="note">The byte positions refer to a <b>single continuous arithmetic code</b>, not 31,102 independently encoded verses. The view shows the same global encoder state at the selected character.</p></section>
+<section class="card"><div class="eyebrow">03 / Get the actual number</div><h2>Build, verify and download</h2><p class="sub">The entire corpus is fetched from the public KJV text, then encoded in your browser with the same 32-bit integer arithmetic model as the original project. You can download the complete number as a reversible <code>.bib1</code> archive.</p>
+<div id="status" role="status">Connecting to source...</div><div id="progressLine"><div id="progressBar"></div></div>
+<div class="actions" id="downloadButtons"><button class="primary" id="downloadCode">Download the number (.bib1)</button><button class="primary secondary" id="downloadText">Download original text (.txt)</button></div>
+<p class="small" id="hash"></p><button id="retry" class="primary secondary" style="display:none">Retry</button></section>
+<footer>Source corpus: <a href="https://github.com/aruljohn/Bible-kjv" target="_blank" rel="noopener">aruljohn/Bible-kjv</a> (66-book Protestant King James Version; no Apocrypha). Exact representation includes book/verse labels, punctuation, UTF-8 encoding, newline layout, the static frequency model and an EOF symbol. This is lossless compression—not a way of storing millions of bits in a short decimal.</footer>
+</main>
+<script>
+"use strict";
+const NAMES="Genesis|Exodus|Leviticus|Numbers|Deuteronomy|Joshua|Judges|Ruth|1 Samuel|2 Samuel|1 Kings|2 Kings|1 Chronicles|2 Chronicles|Ezra|Nehemiah|Esther|Job|Psalms|Proverbs|Ecclesiastes|Song of Solomon|Isaiah|Jeremiah|Lamentations|Ezekiel|Daniel|Hosea|Joel|Amos|Obadiah|Jonah|Micah|Nahum|Habakkuk|Zephaniah|Haggai|Zechariah|Malachi|Matthew|Mark|Luke|John|Acts|Romans|1 Corinthians|2 Corinthians|Galatians|Ephesians|Philippians|Colossians|1 Thessalonians|2 Thessalonians|1 Timothy|2 Timothy|Titus|Philemon|Hebrews|James|1 Peter|2 Peter|1 John|2 John|3 John|Jude|Revelation".split("|");
+const EXPECTED_SHA="4cd2737334782b1d98067c939f3c0353ace71e4182f43a9469467a270d665346";
+const EXPECTED_BITS=20727884;
+const PREFIX="010000011011110111110101101110100010001111010111011000111000111010001100000101111011100001";
+const $=id=>document.getElementById(id),TE=new TextEncoder(),TD=new TextDecoder();
+let bookData=[],bookRecords=[],records=[],sourceBytes=null,freq=[],cdf=[],total=0,bitArray=null,numBits=0,activeBook=0,activeRecord=0;
+const MAX=4294967295,HALF=2147483648,Q=1073741824,Q3=3221225472;
+function escapeHTML(s){return s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function message(s){$('status').textContent=s}
+function progress(p){$('progressBar').style.width=p.toFixed(1)+"%"}
+function bstr(b,n){return Array.from(b.slice(0,Math.ceil(n/8)),v=>v.toString(2).padStart(8,"0")).join("").slice(0,n)}
+function advance(st,s,write){
+ const width=st.high-st.low+1;
+ let high=st.low+Math.floor(width*cdf[s+1]/total)-1;
+ let low=st.low+Math.floor(width*cdf[s]/total);
+ let pending=st.pending,bits=st.bits;
+ for(;;){
+  let emitted=-1;
+  if(high<HALF){emitted=0}
+  else if(low>=HALF){emitted=1;low-=HALF;high-=HALF}
+  else if(low>=Q&&high<Q3){pending++;low-=Q;high-=Q}
+  else break;
+  if(emitted>=0){if(write){write(emitted);for(let k=0;k<pending;k++)write(1-emitted)}bits+=1+pending;pending=0}
+  low*=2;high=high*2+1;
+ }
+ return {low,high,pending,bits};
+}
+function setBook(bi){
+ activeBook=bi;$('book').value=bi;
+ const br=bookRecords[bi],chapters=[...new Set(br.map(i=>records[i].ch))];
+ $('chapter').innerHTML=chapters.map(n=>'<option value="'+n+'">'+n+'</option>').join('');
+ setChapter(chapters[0]);
+ document.querySelectorAll(".bookSeg").forEach((el,i)=>el.classList.toggle("active",i===bi));
+}
+function setChapter(ch){
+ const options=bookRecords[activeBook].filter(i=>records[i].ch===Number(ch));
+ $('chapter').value=String(ch);
+ $('verse').innerHTML=options.map(i=>'<option value="'+i+'">'+records[i].verse+'</option>').join('');
+ if(options.length)setVerse(options[0]);
+}
+function setVerse(index){
+ activeRecord=index;$('verse').value=index;
+ const chars=Array.from(records[index].line);
+ $('charSlider').max=chars.length-1;$('charSlider').value=0;
+ const {book,ch,verse}=records[index];
+ const next=new URL(location.href);next.searchParams.set("v",book+"."+ch+"."+verse);history.replaceState(null,"",next);
+ updateChar();
+}
+function updateChar(){
+ if(!sourceBytes||!records.length)return;
+ const rec=records[activeRecord],chars=Array.from(rec.line),ci=Number($('charSlider').value);
+ const prefix=chars.slice(0,ci).join(''), current=chars[ci],suffix=chars.slice(ci+1).join('');
+ $('verseText').innerHTML=escapeHTML(prefix)+'<mark>'+escapeHTML(current===' '?'␣':current)+'</mark>'+escapeHTML(suffix);
+ $('charCaption').textContent=(rec.bookName+" "+rec.ch+":"+rec.verse)+" · Character "+(ci+1)+" / "+chars.length;
+ const offset=rec.offset+TE.encode(prefix).length,s=sourceBytes[offset];
+ let st={...rec.state};for(let i=rec.offset;i<offset;i++)st=advance(st,sourceBytes[i]);
+ $('symbol').textContent=(s===32?'SPACE':s===10?'NEWLINE':s>=32&&s<127?String.fromCharCode(s):'UTF-8 '+s)+' · 0x'+s.toString(16).padStart(2,'0');
+ $('probability').textContent=(100*freq[s]/total).toFixed(4)+"%";
+ $('emitted').textContent=st.bits.toLocaleString();
+ $('interval').textContent=st.low.toString(16).padStart(8,'0')+' — '+st.high.toString(16).padStart(8,'0');
+ drawRod(s);
+}
+function drawRod(selected){
+ const canvas=$('prob'),ctx=canvas.getContext('2d'),px=Math.min(window.devicePixelRatio||1,2),w=Math.max(250,canvas.clientWidth),h=w/5.5;
+ canvas.width=Math.round(w*px);canvas.height=Math.round(h*px);ctx.setTransform(px,0,0,px,0,0);ctx.clearRect(0,0,w,h);
+ for(let s=0;s<257;s++){
+  const a=w*cdf[s]/total,b=w*cdf[s+1]/total;
+  ctx.fillStyle=s===selected?'#7eeaf1':s===32?'#306879':s%2?'#194550':'#133943';
+  ctx.fillRect(a,5,Math.max(.3,b-a-.3),h-11);
+  if(b-a>26){ctx.fillStyle=s===selected?'#031d26':'#b3d9df';ctx.font='11px monospace';ctx.fillText(s===32?'␣':s<127&&s>32?String.fromCharCode(s):'',a+5,h/2)}
+ }
+ const x=w*(cdf[selected]+freq[selected]/2)/total;ctx.fillStyle='#fff';ctx.fillRect(Math.max(0,x-.7),0,1.4,h);
+}
+function renderBooks(){
+ const container=$('globalRod');container.innerHTML='';
+ const lengths=bookRecords.map((inds,bi)=>{
+  const start=records[inds[0]].state.bits;
+  const end=bi===65?numBits:records[bookRecords[bi+1][0]].state.bits;
+  return end-start;
+ });
+ lengths.forEach((length,i)=>{
+  const node=document.createElement('button');
+  node.className='bookSeg'+(i===activeBook?' active':'');
+  node.style.width=(100*length/numBits)+'%';
+  node.title=NAMES[i]+' · '+bookRecords[i].length+' verses';
+  node.setAttribute('aria-label',NAMES[i]);node.addEventListener('click',()=>setBook(i));
+  container.appendChild(node);
+ });
+}
+function download(blob,name){
+ const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(url),20000);
+}
+async function hash(b){return Array.from(new Uint8Array(await crypto.subtle.digest('SHA-256',b)),x=>x.toString(16).padStart(2,'0')).join('')}
+async function getAll(){
+ let raw=new Array(66),done=0;let cursor=0;
+ async function worker(){
+  while(cursor<66){
+   const i=cursor++,name=NAMES[i],url='https://raw.githubusercontent.com/aruljohn/Bible-kjv/master/'+name.replaceAll(' ','')+'.json';
+   let data=null,last;
+   for(let attempt=0;attempt<3;attempt++){
+    try{const resp=await fetch(url,{cache:'force-cache'});if(!resp.ok)throw Error('HTTP '+resp.status+' '+name);data=await resp.json();break}
+    catch(e){last=e;if(attempt<2)await new Promise(r=>setTimeout(r,400*(attempt+1)))}
+   }
+   if(!data)throw last;
+   if(!data.chapters?.length)throw Error('Invalid book: '+name);
+   raw[i]=data;done++;message('Loading KJV books: '+done+' / 66 · '+name);progress(40*done/66);
+  }
+ }
+ await Promise.all(Array.from({length:7},()=>worker()));return raw;
+}
+async function init(){
+ $('retry').style.display='none';$('downloadButtons').style.display='none';
+ try{
+  message('Loading all 66 books...');progress(0);
+  const raw=await getAll();let lines=[];
+  records=[];bookRecords=[];
+  for(let i=0;i<66;i++){
+   const book=raw[i],inds=[];
+   for(const chapter of book.chapters)for(const verse of chapter.verses){
+    const line=NAMES[i]+' '+chapter.chapter+':'+verse.verse+' '+verse.text;
+    const ri=records.length;inds.push(ri);
+    records.push({book:i,bookName:NAMES[i],ch:Number(chapter.chapter),verse:Number(verse.verse),line,offset:0,state:null});
+    lines.push(line);
+   }bookRecords.push(inds);
+  }
+  if(records.length!==31102)throw Error('Expected 31,102 verses, received '+records.length);
+  const text=lines.join('\n')+'\n';sourceBytes=TE.encode(text);let off=0;
+  for(const rec of records){rec.offset=off;off+=TE.encode(rec.line+'\n').length}
+  if(off!==sourceBytes.length)throw Error('Byte offsets mismatch');
+  message('Checking original source integrity...');progress(43);
+  const digest=await hash(sourceBytes);
+  if(digest!==EXPECTED_SHA)throw Error('Source text hash mismatch. The public Bible source may have changed.'); 
+  $('hash').textContent='Bible SHA-256: '+digest;
+  const counts=new Uint32Array(256);for(let i=0;i<sourceBytes.length;i++)counts[sourceBytes[i]]++;
+  freq=Array.from(counts,v=>Math.max(1,Math.floor(v*30000/sourceBytes.length)));freq.push(1);
+  cdf=[0];for(const f of freq)cdf.push(cdf[cdf.length-1]+f);
+  total=cdf[cdf.length-1];
+  message('Encoding the complete Bible in one continuous interval...');progress(47);
+  await new Promise(r=>setTimeout(r,40));
+  let state={low:0,high:MAX,pending:0,bits:0},packed=[],partial=0,filled=0,ri=0;
+  function write(b){partial=partial*2+b;if(++filled===8){packed.push(partial);filled=0;partial=0}}
+  for(let i=0;i<sourceBytes.length;i++){
+   if(ri<records.length&&records[ri].offset===i){records[ri].state={...state};ri++}
+   state=advance(state,sourceBytes[i],write);
+  }
+  state=advance(state,256,write);
+  const pending=state.pending+1,bit=state.low<Q?0:1;
+  write(bit);for(let i=0;i<pending;i++)write(1-bit);
+  numBits=state.bits+1+pending;
+  if(filled)packed.push(partial<<(8-filled));
+  bitArray=new Uint8Array(packed);
+  if(numBits!==EXPECTED_BITS||bitArray.length!==2590986)throw Error('Arithmetic code did not match original length: '+numBits);
+  progress(95);$('bits').textContent='0.'+bstr(bitArray,256)+'…';
+  const codeHash=await hash(bitArray);
+  if(codeHash!=='a8c4f5fe65ec67db9792a8b0eff28fa71a114c6bd93bf98878670fe35a5179db')throw Error('Encoded binary differs from independently verified reference');
+  $('hash').textContent+=' · Encoded SHA-256: '+codeHash;
+  const hb=TE.encode(JSON.stringify({format:'BIB1',coding:'Static byte-frequency arithmetic coding, 32-bit E1/E2/E3 renormalisation, MSB-first',model:'Byte frequencies scaled to 30000 with minimum count 1; EOF symbol=256 count 1',title:'KJV 66-book Bible, one verse per line, chapter:verse references',verse_count:31102,source_bytes:sourceBytes.length,source_sha256:digest,frequencies:freq,encoded_bits:numBits,encoded_payload_bytes:bitArray.length,encoded_payload_sha256:codeHash,checkpoints:[]}));
+  const header=new Uint8Array(8);header.set([66,73,66,49]);new DataView(header.buffer).setUint32(4,hb.length,false);
+  const whole=new Blob([header,hb,bitArray],{type:'application/octet-stream'});
+  $('downloadCode').onclick=()=>download(whole,'KJV_Entire_Bible_Arithmetic_Rod.bib1');
+  $('downloadText').onclick=()=>download(new Blob([sourceBytes],{type:'text/plain;charset=utf-8'}),'KJV_66_books_31102_verses.txt');
+  renderBooks();
+  for(let i=0;i<66;i++)$('book').add(new Option(NAMES[i],i));
+  for(const id of ['book','chapter','verse','charSlider'])$(id).disabled=false;
+  $('book').onchange=()=>setBook(Number($('book').value));
+  $('chapter').onchange=()=>setChapter(Number($('chapter').value));
+  $('verse').onchange=()=>setVerse(Number($('verse').value));
+  $('charSlider').oninput=updateChar;window.onresize=()=>{if(sourceBytes)updateChar()};
+  setBook(0);
+  const saved=new URL(location.href).searchParams.get('v');
+  if(saved){const match=saved.match(/^(\d+)\.(\d+)\.(\d+)$/);
+   if(match){const bi=Number(match[1]),ch=Number(match[2]),v=Number(match[3]);
+    if(bi>=0&&bi<66){setBook(bi);setChapter(ch);const r=bookRecords[bi].find(i=>records[i].ch===ch&&records[i].verse===v);if(r!==undefined)setVerse(r)}}}
+  }
+  $('downloadButtons').style.display='flex';progress(100);message('✓ Verified exact KJV source and binary encoding. Ready to explore and download.');
+ }catch(err){console.error(err);message('Unable to load or verify: '+err.message);$('retry').style.display='inline-flex';$('verseText').textContent='Could not initialize. Check your internet connection and tap Retry.'}
+}
+$('retry').onclick=init;
+$('copyBits').onclick=async()=>{if(!bitArray)return;await navigator.clipboard.writeText('0.'+bstr(bitArray,256));$('copyBits').textContent='Copied!'};
+$('copyLink').onclick=async()=>{try{await navigator.share({title:document.title,url:location.href})}catch(e){try{await navigator.clipboard.writeText(location.href);$('copyLink').textContent='Link copied!'}catch(_){} }};
+$('bits').textContent='0.'+PREFIX+'…';init();
+</script></body></html>
